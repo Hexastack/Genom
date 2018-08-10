@@ -1,0 +1,14 @@
+{
+  "name": "genom",
+  "version": "0.0.1",
+  "description": "Nodejs API consumer for Genome Link https://genomelink.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified yet\" && exit 1"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "author": "Hexastack <contact@hexastack.com>",
+  "license": "BSD-4-Clause"
+}
