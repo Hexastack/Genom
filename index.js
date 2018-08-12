@@ -1,2 +1,2 @@
-const Geno = require('./src/Geno')
-module.exports = Geno
+const Genom = require('./src/Genom')
+module.exports = Genom

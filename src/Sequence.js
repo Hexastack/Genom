@@ -1,4 +1,4 @@
-const Genome = require('./lib/Genome')
+const Sequence = require('./lib/Sequence')
 
 const actions = function (region, start, end) {
   return {
@@ -43,20 +43,20 @@ module.exports = function (request) {
     return new Promise((resolve, reject) => {
       const range = end - start
       if (range <= 0 || range > 100000) {
-        return reject(new Error(`The requested genome squence is too long or negative: requested "${range}" chromosomes, while it has to be between 1 and 100000`))
+        return reject(new Error(`The requested Sequence is too long or negative: requested "${range}" chromosomes, while it has to be between 1 and 100000`))
       }
       if (!regions[region]) {
-        return reject(new Error(`The requested genome chromosome: "${region}" does not exist`))
+        return reject(new Error(`The requested chromosome: "${region}" does not exist`))
       }
       if (start < regions[region].start || end > regions[region].end) {
-        return reject(new Error(`The requested genome sequence is out of bounds: recieved "${start} to ${end}" while ${region} is from ${regions[region].start} to ${regions[region].end}`))
+        return reject(new Error(`The requested Sequence is out of bounds: recieved "${start} to ${end}" while ${region} is from ${regions[region].start} to ${regions[region].end}`))
       }
       const payload = actions(region, start, end)
       request(payload, (err, res) => {
         if (err) {
           return reject(err)
         }
-        return resolve(new Genome(res, region, start, end))
+        return resolve(new Sequence(res, region, start, end))
       })
     })
   }

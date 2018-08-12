@@ -2,9 +2,9 @@ const request = require('request')
 const requestApi = require('./lib/requestAPI')
 
 const report = require('./Report')
-const genome = require('./Genome')
+const sequence = require('./Sequence')
 
-const Geno = function(token, timeout) {
+const Genom = function(token, timeout) {
   const requestWrapper = request.defaults({
     baseUrl: 'https://genomelink.io/v1',
     headers: {
@@ -16,7 +16,7 @@ const Geno = function(token, timeout) {
   })
   this.doRequest = requestApi(requestWrapper)
   this.report = report(this.doRequest)
-  this.genome = genome(this.doRequest)
+  this.sequence = sequence(this.doRequest)
 }
 
-module.exports = Geno
+module.exports = Genom
